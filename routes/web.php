@@ -22,4 +22,5 @@ $router->group(['prefix' => 'api'], function () use ($router){
    $router->post('/create/post','PostController@createPost');
    $router->post('/update/post','PostController@updatePost');
    $router->post('/delete/post','PostController@delete');
+   $router->post('/like/post','PostController@like');
 });

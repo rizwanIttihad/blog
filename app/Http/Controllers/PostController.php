@@ -43,4 +43,15 @@ class PostController extends Controller
             return response()->json(['error' => $e, 'status' => 500]);
         }
     }
+
+    public function like(Request $request){
+        try{
+            Post::where('id',$request->input('id'))->update([
+                "likes_count" => $request->likes_count
+            ]);
+            return response()->json(['success' => "Post liked", 'status' => 200]);
+        }catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+            return response()->json(['error' => $e, 'status' => 500]);
+        }
+    }
 }
