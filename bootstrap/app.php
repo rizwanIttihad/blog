@@ -60,7 +60,7 @@ $app->singleton(
 |
 */
 
-$app->configure('app');
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -78,9 +78,9 @@ $app->middleware([
     'Nord\Lumen\Cors\CorsMiddleware',
 ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -94,8 +94,9 @@ $app->middleware([
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
