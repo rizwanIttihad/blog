@@ -57,7 +57,10 @@ class PostController extends Controller
                 "is_liked" => 1,
             ]);
 
-            PostLikeBy::create([
+            PostLikeBy::updateOrCreate([
+                'post_id' => $request->input('id'),
+                'user_id' => Auth::user()->id,
+            ],[
                 'post_id' => $request->input('id'),
                 'user_id' => Auth::user()->id,
             ]);
